@@ -3,6 +3,7 @@ import { useMemo, useState } from "react";
 import SelectCustom from "./select";
 
 import "./App.css";
+import { DefaultOptionType } from "./select/type";
 
 function App() {
   const [selected, setSelected] = useState<number[]>([]);
@@ -43,22 +44,29 @@ function App() {
 
   return (
     <div className="App">
-      {/* <SelectCustom
-        options={mockupData}
-        value={singleValue}
-        placeholder="please select"
-        isMulti={false}
-        isSearchable={true}
-        onChange={onSingleChange}
-      /> */}
-      <SelectCustom
-        options={mockupData}
-        value={selected.map((id) => mockupData[id])}
-        placeholder="please select"
-        isMulti={true}
-        isSearchable={false}
-        onChange={onMultiChange}
-      />
+      <div style={{ display: "flex", flexDirection: "row" }}>
+        <SelectCustom
+          options={mockupData}
+          value={singleValue}
+          placeholder="Please select"
+          isMulti={false}
+          onChange={onSingleChange}
+          styles={{
+            container: {
+              marginLeft: "5px",
+              marginRight: "5px",
+            },
+          }}
+        />
+        <SelectCustom
+          options={mockupData}
+          value={selected.map((id) => mockupData[id])}
+          placeholder="please select"
+          isMulti={true}
+          isSearchable={false}
+          onChange={onMultiChange}
+        />
+      </div>
     </div>
   );
 }
@@ -66,12 +74,7 @@ function App() {
 export default App;
 
 const mockupData = [
-  { label: "0", value: "0" },
-  { label: "test", value: "1" },
-  { label: "seeeeeeki", value: "2" },
+  { name: "telegram", value: "0" },
+  { name: "test", value: "1" },
+  { name: "seeeeeeki", value: "2" },
 ];
-
-interface DefaultOptionType {
-  label: string;
-  value: string;
-}

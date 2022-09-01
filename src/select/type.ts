@@ -1,5 +1,5 @@
 export interface DefaultOptionType {
-  label: string;
+  name: string;
   value: string;
 }
 
@@ -12,7 +12,15 @@ export interface SelectProps {
   onChange: (
     newValue: DefaultOptionType | DefaultOptionType[] | undefined
   ) => void;
-  styles?: React.CSSProperties;
+  styles?: {
+    container?: React.CSSProperties;
+    valueContainer?: React.CSSProperties;
+    menu?: React.CSSProperties;
+    menuList?: React.CSSProperties;
+    option?: React.CSSProperties;
+    singleValue?: React.CSSProperties;
+    input?: React.CSSProperties;
+  };
 }
 
 export interface SelectPropsExtended extends SelectProps {
